@@ -1,0 +1,24 @@
+# Python environments
+.venv/
+venv/
+env/
+
+# Python-generated files
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Editors and operating systems
+.idea/
+.vscode/
+.DS_Store
+
+# Build artifacts
+build/
+dist/
