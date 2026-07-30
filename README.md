@@ -34,6 +34,33 @@ The paper's `J`, `h`, and one-based state labels are used directly.
   `1 / log(L)`. The notebook does not extrapolate thermodynamic-limit levels;
   quantitatively converging the higher spectrum requires substantially larger
   bond dimensions and computing resources.
+- `notebooks/potts_generate_ground_states.ipynb` is the expensive half of the
+  saved-state workflow. It runs DMRG and immediately stores one self-describing
+  HDF5 MPS file per physical Hamiltonian in `data/ground_states/`. Both odd and
+  even system sizes are supported; odd-length states are checked at both bonds
+  adjacent to the half-integer centre.
+- `notebooks/potts_entanglement_spectrum_saved.ipynb` is the inexpensive half.
+  It indexes saved metadata, loads only matching MPS files, and reproduces the
+  raw, scaled, and cut-residue entanglement-spectrum plots without running
+  DMRG. Total-size parity and cut parity are separated into four sectors.
+
+## Saved-ground-state workflow
+
+Run `potts_generate_ground_states.ipynb` when new or more accurate ground
+states are needed. A sufficiently accurate converged state is skipped before
+DMRG, and each accepted state is saved immediately after its run. The writer
+prefers converged states, then lower variational energy, then larger achieved
+bond dimension.
+
+The HDF5 filenames contain the system size, couplings, physical boundary
+conditions, and MPS ordering. Numerical details such as requested and achieved
+bond dimension, sweep count, convergence status, tolerances, runtime, energy,
+and canonical-form error are stored inside each file. A lightweight metadata
+header lets the plotting notebook identify matching files without loading all
+MPS tensors.
+
+The binary ground-state files are ignored by Git because they can be large.
+The explanatory `data/ground_states/README.md` remains tracked.
 
 ## Installation
 
