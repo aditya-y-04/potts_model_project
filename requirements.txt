@@ -1,4 +1,5 @@
 physics-tenpy==1.1.0
+h5py==3.16.0
 numpy>=2.0
 matplotlib>=3.10
 jupyterlab>=4.4

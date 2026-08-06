@@ -14,6 +14,12 @@ htmlcov/
 # Jupyter
 .ipynb_checkpoints/
 
+# Large binary MPS ground states (keep the explanatory README)
+data/ground_states/*.h5
+data/ground_states/*.hdf5
+data/ground_states/*.pkl
+data/ground_states/*.pklz
+
 # Editors and operating systems
 .idea/
 .vscode/
